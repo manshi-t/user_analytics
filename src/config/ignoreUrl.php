@@ -1,0 +1,3 @@
+<?php
+$ignoreUrls = [];
+return $ignoreUrls;

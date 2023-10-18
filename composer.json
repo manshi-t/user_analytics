@@ -1,0 +1,37 @@
+{
+    "name": "mansi/analytics",
+    "description": "This package is used to track user's activity on our website.",
+    "license": "MIT",
+    "keywords": [
+      "laravel",
+      "php",
+      "analysis"
+    ],
+    "authors": [
+        {
+            "name": "Mansi Thakkar",
+            "email": "mansi.t@webcodegenie.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mansi\\Analytics\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^10.0",
+        "matomo/device-detector": "^6.1",
+        "guzzlehttp/guzzle": "^7.7",
+        "geoip2/geoip2": "^2.12"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Packages\\Mansi\\Analytics\\Providers\\AnalyticsProvider"
+            ]
+        }
+    }
+    
+}
