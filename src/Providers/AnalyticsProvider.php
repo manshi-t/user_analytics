@@ -16,10 +16,13 @@ class AnalyticsProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->publishes([
             __DIR__.'/../config/analysis.php' =>  config_path('analysis.php'),
-        ], 'config');
+        ], 'analysis');
+        $this->publishes([
+            __DIR__.'/../config/ignoreUrl.php' =>  config_path('ignoreUrl.php'),
+        ], 'analysis');
         $this->publishes([
             __DIR__.'/../js/analytics.js' =>  public_path('js/analytics.js'),
-        ], 'js');
+        ], 'analysis');
     }
     /**
      * Register services.
