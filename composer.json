@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Packages\\Mansi\\Analytics\\Providers\\AnalyticsProvider"
+                "Mansi\\Analytics\\Providers\\AnalyticsProvider"
             ]
         }
     }
