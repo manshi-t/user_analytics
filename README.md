@@ -88,8 +88,9 @@ Information
 | --------------- | --------------- | 
 | id |	bigint unsigned Auto Increment |
 | page_url |	varchar(255) |	
-| time_spent |	varchar(20)	|
-| session_id |	varchar(32) |
+| website | varchar(50) |
+| status | enum('running','failed') | 
+| time_spent |	int	|
 
  page_activities table contain the data and type 
 
@@ -99,6 +100,8 @@ Information
 | clicked_element |	varchar(255) |	
 | timestamp	| varchar(50) |	
 | visited_page_id |	int |
+| session_id |	varchar(32)	|
+| action | varchar(50) |
 
 * whenever configuration will be published , analytics.js & ignoreUrl.php (config) file will be published in public/js directory.Then analytics.js will be used as other js file is used.
 

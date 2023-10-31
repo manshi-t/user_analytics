@@ -22,6 +22,7 @@ class VisitedPage extends Model
     protected $fillable = [
         'page_url',
         'time_spent',
-        'session_id'
+        'website',
+        'status'
     ];
 }

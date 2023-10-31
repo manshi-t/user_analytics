@@ -60,15 +60,18 @@ class AnalyticsController
 		 */
 
          $userSession = Session::firstOrCreate([
-            'session_id' => $clientInfomation['session_id']
-         ],
-            [
+            'session_id' => $clientInfomation['session_id'],
             'ip_address' => $clientInfomation['ip_address'],
             'device_name' => $clientInfomation['device_name'],
             'model' => $clientInfomation['model'],
             'brand' => $clientInfomation['brand'],
             'os' => $clientInfomation['os'],
             'browser' => $clientInfomation['browser']
+         ],
+            [
+            'country' => $clientInfomation['country'],
+            'state' => $clientInfomation['state'],
+            'city' => $clientInfomation['city'],
          ]);
 
         if (!empty($clientInfomation['page_url']) && !in_array($clientInfomation['page_url'],$ignoreUrls)) {
@@ -76,10 +79,13 @@ class AnalyticsController
         /**
 		 * insert data in visited_pages table
 		*/
-            $visitedPage = VisitedPage::create([
+            $visitedPage = VisitedPage::firstOrCreate([
                 'page_url' => $clientInfomation['page_url'],
+            ],
+                [
                 'time_spent' => $clientInfomation['Duration'],
-                'session_id' => $clientInfomation['session_id']
+                'website' => str_contains($clientInfomation['page_url'],'admin') ? 'backend' : 'frontend',
+                'status' => $clientInfomation['page_url'] ? 'running' : 'failed'
             ]);
 
             /**
@@ -90,7 +96,9 @@ class AnalyticsController
                     $insertActivity[$i] = PageActivity::create([
                         'clicked_element' => $clientInfomation['pageActivity'][$i]['clickedElement'],
                         'timestamp' => $clientInfomation['pageActivity'][$i]['timestamp'],
-                        'visited_page_id' => $visitedPage->id
+                        'visited_page_id' => $visitedPage->id,
+                        'session_id' => $clientInfomation['session_id'],
+                        'action' => $clientInfomation['pageActivity'][$i]['action']
                     ]);
                 }
             }

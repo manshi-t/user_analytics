@@ -22,6 +22,8 @@ class PageActivity extends Model
     protected $fillable = [
         'clicked_element',		
         'timestamp',		
-        'visited_page_id'
+        'visited_page_id',
+        'session_id',
+        'action'
     ];
 }

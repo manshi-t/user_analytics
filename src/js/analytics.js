@@ -9,7 +9,8 @@ class Analytics{
     document.addEventListener('click', (event) => {
       dataHistory.push({
         clickedElement: event.target.dataset ? event.target.dataset : event.target.innerHTML,
-        timestamp: new Date()
+        timestamp: new Date(),
+        action: event.target.innerHTML
       });
     })
 
