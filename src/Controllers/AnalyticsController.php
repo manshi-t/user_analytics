@@ -44,8 +44,23 @@ class AnalyticsController
                 ['Duration' => self::$pageInfo['totalTime']],['page_url' => self::$pageInfo['url']],['pageActivity' => $pageActivity]
             );
             $this->insertClientInformation(self::$clientInfomation);
-        } catch (\Exception $e) {
-            echo $e->getMessage();
+
+            $response = [
+                'type' => 'success',
+                'code' => 200,
+                'message' => "UserInfo Store Successfully",
+                'data' => self::$clientInfomation,
+            ];
+
+            return response()->json($response, 200);
+        } catch (\Throwable $e) {
+            Log::error($th->getMessage());
+            $response = [
+                'type' => 'error',
+                'code' => 500,
+                'message' => $th->getMessage()
+            ];
+            return response()->json($response, 500);
         }
     }
 

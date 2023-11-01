@@ -3,6 +3,7 @@
 namespace Mansi\Analytics\Tests\Feature;
 
 use Tests\TestCase;
+use Mansi\Analytics\Controllers\AnalyticsController;
 
 class UserAnalyticsTest extends TestCase
 {
@@ -52,7 +53,8 @@ class UserAnalyticsTest extends TestCase
             ]
         );
 
-        $response = $this->post(route('analytics',http_build_query(array('clientInfomation' => $clientInfomation))));
+        $clientInfo = new AnalyticsController();
+        $response = $clientInfo->insertClientInformation($clientInfomation);
         $this->test_for_userInfo_creating($clientInfomation);
         return $response['data'];
     }
