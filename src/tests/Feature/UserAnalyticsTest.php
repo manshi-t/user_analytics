@@ -7,15 +7,18 @@ use Mansi\Analytics\Controllers\AnalyticsController;
 
 class UserAnalyticsTest extends TestCase
 {
-    
+     /**
+     * test case for user info creation.
+     */
     public function test_for_userInfo_creating(){
         $response = $this->get_userInfo();
         $response->assertStatus(200);
     }
 
+    //get userInfo for testcase
     public function get_userInfo(){
     
-      // Positive test case
+      // array of userInfo
       $clientInfomation = array(
             "session_id" => "e73v6hv24v5e30jfaqnk2gi12i",
             "ip_address" => "127.0.0.1",
@@ -53,9 +56,9 @@ class UserAnalyticsTest extends TestCase
             ]
         );
 
+        //create object of AnalyticsController and call insertClientInformation method for inserting user information
         $clientInfo = new AnalyticsController();
         $response = $clientInfo->insertClientInformation($clientInfomation);
-        $this->test_for_userInfo_creating($clientInfomation);
         return $response['data'];
     }
 }

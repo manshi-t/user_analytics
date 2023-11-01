@@ -1,4 +1,5 @@
 class Analytics{
+
   userAnalysis() {
     let dataHistory = [];
     let start = 0,end = 0,totalTime = 0;
@@ -6,6 +7,7 @@ class Analytics{
       start = new Date().getTime();
     });
 
+    //store page element on click event
     document.addEventListener('click', (event) => {
       dataHistory.push({
         clickedElement: event.target.dataset ? event.target.dataset : event.target.text,
@@ -14,6 +16,7 @@ class Analytics{
       });
     })
 
+    //calculate total time (spent time) of page
     window.addEventListener('beforeunload', function() {
       end = new Date().getTime();
       totalTime = (end - start) / 1000;

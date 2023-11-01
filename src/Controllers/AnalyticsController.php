@@ -26,6 +26,8 @@ class AnalyticsController
             $sessionId = $_COOKIE['PHPSESSID'];
             $ip = $request->ip();
             $serverDetail = self::clientInfo();
+
+            // device detector is used to get device information from ip_address
             $device = new DeviceDetector($_SERVER['HTTP_USER_AGENT']);
             $device->parse();
             $clientInfo = $device->getClient(); 
@@ -33,6 +35,8 @@ class AnalyticsController
             $name = $device->getDeviceName();
             $brand = $device->getBrandName();
             $model = $device->getModel();
+
+            //read page and get user's activity information
             $data = json_decode(file_get_contents('php://input'), true);
             $len = sizeof($data);
             self::$pageInfo = array_merge(self::$pageInfo,$data[$len-1]);
