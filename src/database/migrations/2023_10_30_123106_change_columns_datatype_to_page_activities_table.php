@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::connection(config('analysis.analysis'))->table('page_activities', function (Blueprint $table) {
-            $table->string('action',50)->change();
+            $table->string('action',50)->change(); //Ex:-'buy now','opened','closed','favorite','unfavorite','other'
         });
     }
 

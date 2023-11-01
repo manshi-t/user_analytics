@@ -23,6 +23,9 @@ class AnalyticsProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../js/analytics.js' =>  public_path('js/analytics.js'),
         ], 'analysis');
+        $this->publishes([
+            __DIR__.'/../tests/Feature/UserAnalyticsTest.php' =>  base_path('tests/Feature/UserAnalyticsTest.php'),
+        ], 'analysis');
     }
     /**
      * Register services.

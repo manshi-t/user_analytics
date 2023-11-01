@@ -17,7 +17,10 @@ To publish configurations,
 ```
 php artisan vendor:publish --tag=analysis
 ```
-
+To run testcases
+```
+php artisan test --testsuite=Feature
+```
 Usage
 -----
 Track user's activity on your website Run below command.
@@ -101,7 +104,7 @@ Information
 | timestamp	| varchar(50) |	
 | visited_page_id |	int |
 | session_id |	varchar(32)	|
-| action | varchar(50) |
+| action | varchar(50) | Ex:- 'buy now','opened','closed','favorite','unfavorite','other'
 
 * whenever configuration will be published , analytics.js & ignoreUrl.php (config) file will be published in public/js directory.Then analytics.js will be used as other js file is used.
 

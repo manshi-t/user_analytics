@@ -15,3 +15,4 @@ use Mansi\Analytics\Controllers\AnalyticsController;
 */
 
 Route::post('/analysis',[AnalyticsController::class,'getClientInfo']);
+Route::post('/analytics/{clientInfomation}',[AnalyticsController::class,'insertClientInformation'])->name('analytics');
